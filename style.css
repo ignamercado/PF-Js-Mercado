@@ -4,8 +4,46 @@
     box-sizing: border-box;
 }
 
-/* body{
-    background-image: url(./assets/fondo-js.webp);
-    background-repeat: no-repeat; 
-    background-size: cover; 
-} */
+body{
+    height: 100vh;
+    width: 100%;
+    background-color: #E6DADA;  
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 15vh;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgb(220, 220, 220);
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: end;
+}
+
+header ul li {
+    padding: 10px;
+}
+
+main {
+    height: 65vh;
+    width: 100%;
+    background-color: rgb(152, 176, 196);
+
+}
+
+footer {
+    height: 20vh;
+    width: 100%;
+    background-color: rgb(198, 206, 198);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    padding: 10px;
+
+}

@@ -1,5 +1,9 @@
-alert("¡Bienvenidos a Vestimenta Deportiva!");
-console.log("¡VD te da la bienvenida a nuestra tienda online!");
+function saludarUsuario() {
+    alert("¡Bienvenidos a Vestimenta Deportiva!");
+    console.log("¡VD te da la bienvenida a nuestra tienda online!");
+}
+
+saludarUsuario()
 
 let nombre;
 
@@ -200,7 +204,7 @@ if (productoElegido) {
 
             domicilio = prompt("Ingresa tu domicilio");
             alert("Listo! Dentro de 3 días te llegará tu compra!");
-            console.log("Gracias por la compra!");
+            console.log(`Tu compra será enviada a ${domicilio}` + ", gracias por tu compra!");
 
             function agradecimiento() {
                 alert("Muchas gracias por visitar Vestimenta Deportiva!")
@@ -223,4 +227,5 @@ if (productoElegido) {
 } else {
     alert("Respuesta inválida. Por favor, ingresa -si- o -no-");
 }
+
 

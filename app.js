@@ -92,11 +92,73 @@ if (registrado) {
             default:
                 productoElegido = "este producto";
         }
+
+        let modalidad;
+        let domicilio;
         
         if (compra.toLowerCase() === "si") {
             if (productoElegido !== "este producto") {
                 alert(`Quieres comprar ${productoElegido}`);
                 console.log("Muy buena elección!");
+                modalidad = prompt("¿Deseas retirar en el local o que enviemos a domicilio? (R ó E)")
+                console.log("¿Retiro en el local o envío a domicilio?")
+
+//----------------MODALIDAD: RETIRO EN EL LOCAL
+
+                if (modalidad.toLowerCase() == "r"){
+                    alert("Has seleccionado retiro en el local")
+                    console.log("Te esperamos aquí!")
+
+                // Preguntar al usuario en qué sucursal retirará el pedido
+
+
+                let sucursal;
+
+                sucursal = prompt(`¿En cual sucursal harás el retiro?
+                1: Centro
+                2: Norte
+                3: Sur
+                4: Este
+                5: Oeste
+                `);
+
+                switch (sucursal) {
+                    case "1":
+                sucursalElegida = "centro";
+                break;
+            case "2":
+                sucursalElegida = "norte";
+                break;
+            case "3":
+                sucursalElegida = "sur";
+                break;
+            case "4":
+                sucursalElegida = "este";
+                break;
+            case "5":
+                sucursalElegida = "oeste";
+                break;
+            default:
+                sucursalElegida = "sucursal inexistente";
+        }
+
+        if (sucursalElegida !== "sucursal inexistente") {
+            alert(`Harás el retiro en la sucursal ${sucursalElegida}`);
+            console.log(`Entendido! Te esperamos en la sucursal ${sucursalElegida}`);
+
+//----------------MODALIDAD: ENVÍO A DOMICILIO
+
+                } else if (modalidad.toLowerCase() == "e"){
+                    alert("Has seleccionado envío a domicilio")
+                    console.log("Quédate en tu casa y nosotros te lo enviamos!")
+
+                    domicilio = prompt("Ingresa tu domicilio");
+                    console.log("Gracias por la ayuda!")
+                    alert("Listo! Dentro de 3 días te llegará tu compra!")
+                } else{
+                    alert("Respuesta inválida")
+                    console.log("No has seleccionado una respuesta válida")
+                }
             } else {
                 alert(`Por el momento no tenemos stock de ${productoElegido}`);
                 console.log("¡Intentaremos conseguirlo pronto!");
@@ -110,4 +172,5 @@ if (registrado) {
         }
     }
 
+  }
 }

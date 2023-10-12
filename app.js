@@ -60,43 +60,58 @@ let compra = prompt("¿Deseas realizar una compra en nuestra tienda VD? (si/no)"
 
 if (compra.toLowerCase() === "si") {
     alert("¡Veamos qué producto/s te interesan!");
-    console.log("¿Difícil elegir entre tantos productos, verdad?");
+    console.log("¿Difícil elegir entre tantos productos, verdad?");   
+} else if (compra.toLowerCase() === "no") {
+    alert("Muy bien! Puedes echar un vistazo a la tienda online y volver en otro momento!");
+    console.log("El usuario no desea realizar una compra");
+} else {
+    alert("Respuesta inválida. Por favor, ingresa -si- o -no-");
+    while (true) {
+        let compra = prompt("¿Deseas realizar una compra en nuestra tienda VD? (si/no)");
+        if (compra.toLowerCase() === "si" || compra.toLowerCase() === "no") {
+            break;
+        } else {
+            alert("Por favor, responde 'si' o 'no'.");
+            console.log("Inténtalo nuevamente");
+        }
+    }
+}
 
-    // Establezco los productos como objetos y luego preguntar al usuario qué producto le interesa
+// Establezco los productos como objetos y luego preguntar al usuario qué producto le interesa
 
 const camisetas = {
-    nombre : "camisetas",
-    precio : 12000,
-    marca : "Adidas",
-    stock : true
+    nombre: "camisetas",
+    precio: 12000,
+    marca: "Adidas",
+    stock: true
 }
 
 const shorts = {
-    nombre : "shorts",
-    precio : 3500,
-    marca : "Adidas",
-    stock : true
+    nombre: "shorts",
+    precio: 3500,
+    marca: "Adidas",
+    stock: true
 }
 
 const medias = {
-    nombre : "medias",
-    precio : 2500,
-    marca : "Nike",
-    stock : true
+    nombre: "medias",
+    precio: 2500,
+    marca: "Nike",
+    stock: true
 }
 
 const botines = {
-    nombre : "botines",
-    precio : 30000,
-    marca : "Puma",
-    stock : true
+    nombre: "botines",
+    precio: 30000,
+    marca: "Puma",
+    stock: true
 }
 
 const guantes = {
-    nombre : "guantes",
-    precio : 6000,
-    marca : "Under Armour",
-    stock : true
+    nombre: "guantes",
+    precio: 6000,
+    marca: "Under Armour",
+    stock: true
 };
 
 let eleccion = prompt(`Elige un producto:
@@ -104,7 +119,8 @@ let eleccion = prompt(`Elige un producto:
 2: Shorts
 3: Medias
 4: Botines
-5: Guantes`);
+5: Guantes`
+);
 
 let productoElegido;
 
@@ -137,95 +153,84 @@ if (productoElegido) {
     console.log("Producto no válido");
 }
 
-    let modalidad;
-    let domicilio;
+let modalidad;
+let domicilio;
 
-    if (productoElegido !== "este producto") {
-        alert(`Quieres comprar ${productoElegido}`);
-        console.log("Muy buena elección!");
-        modalidad = prompt("¿Deseas retirar en el local o que enviemos a domicilio? (R ó E)");
-        console.log("¿Retiro en el local o envío a domicilio?");
 
-        if (modalidad.toLowerCase() === "r") {
-            alert("Has seleccionado retiro en el local");
-            console.log("Te esperamos aquí!");
+if (productoElegido !== "este producto") {
+    alert(`Quieres comprar ${productoElegido.nombre}`);
+    console.log("Muy buena elección!");
+    modalidad = prompt("¿Deseas retirar en el local o que enviemos a domicilio? (R ó E)");
+    console.log("¿Retiro en el local o envío a domicilio?");
 
-            // Preguntar al usuario en qué sucursal retirará el pedido
-            let sucursal;
+    if (modalidad.toLowerCase() === "r") {
+        alert("Has seleccionado retiro en el local");
+        console.log("Te esperamos aquí!");
+    } else if (modalidad.toLowerCase() === "e") {
+        alert("Has seleccionado envío a domicilio");
+        console.log("Quédate en tu casa y nosotros te lo enviamos!");
 
-            sucursal = prompt(`¿En cuál sucursal harás el retiro?
-            1: Centro
-            2: Norte
-            3: Sur
-            4: Este
-            5: Oeste
-            `);
+    domicilio = prompt("Ingresa tu domicilio");
+    alert("Listo! Dentro de 3 días te llegará tu compra!");
+    console.log(`Tu compra será enviada a ${domicilio}` + ", gracias por tu compra!");
 
-            switch (sucursal) {
-                case "1":
-                    sucursalElegida = "centro";
-                    break;
-                case "2":
-                    sucursalElegida = "norte";
-                    break;
-                case "3":
-                    sucursalElegida = "sur";
-                    break;
-                case "4":
-                    sucursalElegida = "este";
-                    break;
-                case "5":
-                    sucursalElegida = "oeste";
-                    break;
-                default:
-                    sucursalElegida = "sucursal inexistente";
-            }
-
-           
-
-            if (sucursalElegida !== "sucursal inexistente") {
-                alert(`Harás el retiro en la sucursal ${sucursalElegida}`);
-                console.log(`Entendido! Te esperamos en la sucursal ${sucursalElegida}`);
-
-                function agradecimiento() {
-                    alert("Muchas gracias por visitar Vestimenta Deportiva!")
-                    console.log("Lo esperamos pronto!")
-                }
-    
-                agradecimiento()
-
-            } else {
-                alert("Sucursal inválida");
-                console.log("No has seleccionado una sucursal válida");
-            }
-        } else if (modalidad.toLowerCase() === "e") {
-            alert("Has seleccionado envío a domicilio");
-            console.log("Quédate en tu casa y nosotros te lo enviamos!");
-
-            domicilio = prompt("Ingresa tu domicilio");
-            alert("Listo! Dentro de 3 días te llegará tu compra!");
-            console.log(`Tu compra será enviada a ${domicilio}` + ", gracias por tu compra!");
-
-            function agradecimiento() {
-                alert("Muchas gracias por visitar Vestimenta Deportiva!")
-                console.log("Lo esperamos pronto!")
-            }
-
-            agradecimiento()
-
-        } else {
-            alert("Respuesta inválida");
-            console.log("No has seleccionado una respuesta válida");
-        }
-    } else {
-        alert(`Por el momento no tenemos stock de ${productoElegido}`);
-        console.log("¡Intentaremos conseguirlo pronto!");
-    }
-} else if (compra.toLowerCase() === "no") {
-    alert("Muy bien! Puedes echar un vistazo a la tienda online y volver en otro momento!");
-    console.log("El usuario no desea realizar una compra");
 } else {
-    alert("Respuesta inválida. Por favor, ingresa -si- o -no-");
+    alert("Respuesta inválida");
+    console.log("No has seleccionado una respuesta válida");
+    }
+    while (true) {
+        modalidad = prompt("¿Deseas retirar en el local o que enviemos a domicilio? (R ó E)");
+        if (modalidad.toLowerCase() === "r" || modalidad.toLowerCase() === "e") {
+            break;
+        } else {
+            alert("Por favor, responde 'r' o 'e'.");
+            console.log("Inténtalo nuevamente");
+        }
+    }
+        // Preguntar al usuario en qué sucursal retirará el pedido
+        const sucursales = [
+            "Centro",
+            "Norte",
+            "Sur",
+            "Este",
+            "Oeste"
+        ];
+
+        const seleccionSucursal = prompt(`¿En cuál sucursal harás el retiro?
+              1: Centro
+              2: Norte
+              3: Sur
+              4: Este
+              5: Oeste`);
+
+        const sucursalElegida = buscarSucursal(seleccionSucursal);
+
+        if (sucursalElegida !== "sucursal inexistente") {
+            alert(`Harás el retiro en la sucursal ${sucursalElegida}`);
+            console.log(`Entendido. Te esperamos en la sucursal ${sucursalElegida}`);
+            agradecimiento();
+        } else {
+            alert("Sucursal inexistente. Introduce un número válido.");
+        }
+
+        function buscarSucursal(seleccion) {
+            const indiceSeleccion = parseInt(seleccion) - 1;
+            let sucursalEncontrada = "sucursal inexistente";
+        
+            if (indiceSeleccion >= 0 && indiceSeleccion < sucursales.length) {
+                sucursales.forEach((s, index) => {
+                    if (index === indiceSeleccion) {
+                        sucursalEncontrada = s;
+                    }
+                });
+            }
+        
+            return sucursalEncontrada;
+        }
+        function agradecimiento() {
+            alert("¡Muchas gracias por visitar Vestimenta Deportiva!");
+            console.log("¡Te esperamos pronto!");
+        }
 }
 
 

@@ -74,6 +74,9 @@ main {
 }
 
 .productos {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     height: 100%;
     width: 50%;
 }
@@ -86,8 +89,7 @@ main {
 }
 
 .estiloP {
-    color: rgb(255, 255, 255);
-    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
 footer {

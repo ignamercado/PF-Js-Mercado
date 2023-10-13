@@ -60,7 +60,7 @@ let compra = prompt("¿Deseas realizar una compra en nuestra tienda VD? (si/no)"
 
 if (compra.toLowerCase() === "si") {
     alert("¡Veamos qué producto/s te interesan!");
-    console.log("¿Difícil elegir entre tantos productos, verdad?");   
+    console.log("¿Difícil elegir entre tantos productos, verdad?");
 } else if (compra.toLowerCase() === "no") {
     alert("Muy bien! Puedes echar un vistazo a la tienda online y volver en otro momento!");
     console.log("El usuario no desea realizar una compra");
@@ -170,13 +170,13 @@ if (productoElegido !== "este producto") {
         alert("Has seleccionado envío a domicilio");
         console.log("Quédate en tu casa y nosotros te lo enviamos!");
 
-    domicilio = prompt("Ingresa tu domicilio");
-    alert("Listo! Dentro de 3 días te llegará tu compra!");
-    console.log(`Tu compra será enviada a ${domicilio}` + ", gracias por tu compra!");
+        domicilio = prompt("Ingresa tu domicilio");
+        alert("Listo! Dentro de 3 días te llegará tu compra!");
+        console.log(`Tu compra será enviada a ${domicilio}` + ", gracias por tu compra!");
 
-} else {
-    alert("Respuesta inválida");
-    console.log("No has seleccionado una respuesta válida");
+    } else {
+        alert("Respuesta inválida");
+        console.log("No has seleccionado una respuesta válida");
     }
     while (true) {
         modalidad = prompt("¿Deseas retirar en el local o que enviemos a domicilio? (R ó E)");
@@ -187,50 +187,84 @@ if (productoElegido !== "este producto") {
             console.log("Inténtalo nuevamente");
         }
     }
-        // Preguntar al usuario en qué sucursal retirará el pedido
-        const sucursales = [
-            "Centro",
-            "Norte",
-            "Sur",
-            "Este",
-            "Oeste"
-        ];
+    // Preguntar al usuario en qué sucursal retirará el pedido
+    const sucursales = [
+        "Centro",
+        "Norte",
+        "Sur",
+        "Este",
+        "Oeste"
+    ];
 
-        const seleccionSucursal = prompt(`¿En cuál sucursal harás el retiro?
+    const seleccionSucursal = prompt(`¿En cuál sucursal harás el retiro?
               1: Centro
               2: Norte
               3: Sur
               4: Este
               5: Oeste`);
 
-        const sucursalElegida = buscarSucursal(seleccionSucursal);
+    const sucursalElegida = buscarSucursal(seleccionSucursal);
 
-        if (sucursalElegida !== "sucursal inexistente") {
-            alert(`Harás el retiro en la sucursal ${sucursalElegida}`);
-            console.log(`Entendido. Te esperamos en la sucursal ${sucursalElegida}`);
-            agradecimiento();
-        } else {
-            alert("Sucursal inexistente. Introduce un número válido.");
+    if (sucursalElegida !== "sucursal inexistente") {
+        alert(`Harás el retiro en la sucursal ${sucursalElegida}`);
+        console.log(`Entendido. Te esperamos en la sucursal ${sucursalElegida}`);
+        agradecimiento();
+    } else {
+        alert("Sucursal inexistente. Introduce un número válido.");
+    }
+
+    function buscarSucursal(seleccion) {
+        const indiceSeleccion = parseInt(seleccion) - 1;
+        let sucursalEncontrada = "sucursal inexistente";
+
+        if (indiceSeleccion >= 0 && indiceSeleccion < sucursales.length) {
+            sucursales.forEach((s, index) => {
+                if (index === indiceSeleccion) {
+                    sucursalEncontrada = s;
+                }
+            });
         }
 
-        function buscarSucursal(seleccion) {
-            const indiceSeleccion = parseInt(seleccion) - 1;
-            let sucursalEncontrada = "sucursal inexistente";
-        
-            if (indiceSeleccion >= 0 && indiceSeleccion < sucursales.length) {
-                sucursales.forEach((s, index) => {
-                    if (index === indiceSeleccion) {
-                        sucursalEncontrada = s;
-                    }
-                });
-            }
-        
-            return sucursalEncontrada;
-        }
-        function agradecimiento() {
-            alert("¡Muchas gracias por visitar Vestimenta Deportiva!");
-            console.log("¡Te esperamos pronto!");
-        }
+        return sucursalEncontrada;
+    }
+    function agradecimiento() {
+        alert("¡Muchas gracias por visitar Vestimenta Deportiva!");
+        console.log("¡Te esperamos pronto!");
+    }
 }
 
+//Entiendo que esta parte no se pide en esta entrega, pero lo escribi entendiendolo como un desafío. Esto se mostrará si el usuario decide efectuar una compra.
+
+const productos = document.querySelector(".productos");
+// console.log(productos);
+
+let productosOfrecidos = [
+    { id: 1, titulo: "Camisetas", precio: 12000 },
+    { id: 2, titulo: "Shorts", precio: 3500 },
+    { id: 3, titulo: "Medias", precio: 2500 },
+    { id: 4, titulo: "Botines", precio: 30000 },
+    { id: 5, titulo: "Guantes", precio: 6000 }
+];
+
+// console.log(productosOfrecidos);
+
+for (let p of productosOfrecidos) {
+    let container = document.createElement("div");
+    container.innerHTML = `
+        <h3 class="estiloP">Producto: ${p.titulo}</h3>
+        <p class="estiloP">Precio: ${p.precio}</p>
+
+        <button class="botonCarrito">Añadir al carrito</button>
+    `;
+    productos.appendChild(container);
+}
+
+const carrito = [
+    {nombre: "Camisetas", precio: 12000},
+    {nombre: "Shorts", precio: 3500}
+]
+
+let resultado = carrito.reduce((accum,p) => {
+    return accum + p.precio
+}, 0)
 

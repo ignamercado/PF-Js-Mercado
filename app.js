@@ -233,8 +233,6 @@ if (productoElegido !== "este producto") {
     }
 }
 
-//Entiendo que esta parte no se pide en esta entrega, pero lo escribi entendiendolo como un desafío. Esto se mostrará si el usuario decide efectuar una compra.
-
 const productos = document.querySelector(".productos");
 // console.log(productos);
 

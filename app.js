@@ -4,6 +4,9 @@ const formulario = document.getElementById('miFormulario');
 
 formulario.addEventListener('submit', function (e) {
     e.preventDefault();
+
+
+// De esta manera accedo a los valores de los campos del formulario
     const nombre = formulario.elements.nombre.value;
     const direccion = formulario.elements.direccion.value;
     const telefono = formulario.elements.telefono.value;
@@ -16,6 +19,7 @@ formulario.addEventListener('submit', function (e) {
 });
 
 // Defino mis productos
+
 
 const camisetas = {
     nombre: "camisetas",
@@ -54,15 +58,13 @@ const guantes = {
 
 // Inicio variables
 
-let precioTotal = 0;
-const carrito = []
+const carrito = [];
 
-for (const producto of carrito) {
-    precioTotal += producto.precio;
-}
-
-console.log(carrito)
-console.log(precioTotal)
+function agregarAlCarrito(producto) {
+    carrito.push(producto);
+    console.log(`${producto.nombre} agregado al carrito.`);
+    mostrarCarrito(); 
+  }
 
 // Capturar el boton de comprar
 
@@ -70,8 +72,36 @@ const buttons = document.querySelectorAll('[id="botonCompra"]');
 
 // Aquí ejecuto un forEach para recorrer cada elemento de la NodeList llamada -buttons-
 
-buttons.forEach(button => {
+buttons.forEach((button, index) => {
     button.addEventListener("click", () => {
-        console.log("Click sobre el botón de compra");
+      agregarAlCarrito([camisetas, shorts, medias, botines, guantes][index]);
     });
 });
+  
+
+function mostrarCarrito() {
+    console.log("Carrito de compras:");
+    carrito.forEach((producto) => {
+      console.log(`${producto.nombre} - Precio: ${producto.precio}`);
+    });
+  
+    const precioTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
+    console.log(`Precio total: ${precioTotal}`);
+  }
+
+// Almacenamos los productos en JSON
+
+const camisetasStr = JSON.stringify(camisetas)
+localStorage.setItem("camisetas", camisetasStr)
+
+const shortsStr = JSON.stringify(shorts)
+localStorage.setItem("shorts", shortsStr)
+
+const mediasStr = JSON.stringify(medias)
+localStorage.setItem("medias", mediasStr)
+
+const botinesStr = JSON.stringify(botines)
+localStorage.setItem("botines", botinesStr)
+
+const guantesStr = JSON.stringify(guantes)
+localStorage.setItem("guantes", guantesStr)

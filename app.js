@@ -78,7 +78,7 @@ function eliminarProductoDelCarrito(index) {
 }
 
 
-// Almacenamos los productos en JSON
+//Almacenamos los productos en JSON
 
 // const camisetasStr = JSON.stringify(camisetas)
 // localStorage.setItem("camisetas", camisetasStr)

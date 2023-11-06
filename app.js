@@ -17,7 +17,9 @@ formulario.addEventListener('submit', function (e) {
         telefono,
     };
 
-    localStorage.setItem('datosComprador', JSON.stringify(datosComprador));
+// Envío los datos del comprador al sS, así una vez que cierre el navegador, se elimine la información
+
+    sessionStorage.setItem('datosComprador', JSON.stringify(datosComprador));
 
     setTimeout(function () {
         console.log(`Nombre:\n${nombre}\nDirección:\n${direccion}\nTeléfono:\n${telefono}`);
@@ -91,7 +93,7 @@ function eliminarProductoDelCarrito(index) {
 
 
 function mostrarDatosFinales() {
-    const datosComprador = JSON.parse(localStorage.getItem('datosComprador'));
+    const datosComprador = JSON.parse(sessionStorage.getItem('datosComprador'));
     const carrito = JSON.parse(localStorage.getItem('carrito'));
 
     if (datosComprador && carrito) {
@@ -99,7 +101,7 @@ function mostrarDatosFinales() {
         console.log('Productos comprados:', carrito);
 
         // Limpia el localStorage después de mostrar los datos 
-        localStorage.removeItem('datosComprador');
+        sessionStorage.removeItem('datosComprador');
         localStorage.removeItem('carrito');
     }
 }

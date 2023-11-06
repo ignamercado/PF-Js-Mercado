@@ -11,6 +11,14 @@ formulario.addEventListener('submit', function (e) {
     const direccion = formulario.elements.direccion.value;
     const telefono = formulario.elements.telefono.value;
 
+    const datosComprador = {
+        nombre,
+        direccion,
+        telefono,
+    };
+
+    localStorage.setItem('datosComprador', JSON.stringify(datosComprador));
+
     setTimeout(function () {
         console.log(`Nombre:\n${nombre}\nDirección:\n${direccion}\nTeléfono:\n${telefono}`);
         console.log("Los datos han sido enviados correctamente")
@@ -26,9 +34,13 @@ const carrito = [];
 
 function agregarAlCarrito(producto) {
     carrito.push(producto);
-    console.log(`${producto.nombre} agregado al carrito.`);
-    mostrarCarrito(); 
-  }
+    guardarCarritoEnLocalStorage();
+    mostrarCarrito();
+}
+
+function guardarCarritoEnLocalStorage() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
 // Capturar el boton de comprar
 
@@ -78,19 +90,21 @@ function eliminarProductoDelCarrito(index) {
 }
 
 
-//Almacenamos los productos en JSON
+function mostrarDatosFinales() {
+    const datosComprador = JSON.parse(localStorage.getItem('datosComprador'));
+    const carrito = JSON.parse(localStorage.getItem('carrito'));
 
-// const camisetasStr = JSON.stringify(camisetas)
-// localStorage.setItem("camisetas", camisetasStr)
+    if (datosComprador && carrito) {
+        // Aquí puedes mostrar los datos finales, por ejemplo, en un elemento HTML.
+        console.log('Datos del comprador:', datosComprador);
+        console.log('Productos comprados:', carrito);
 
-// const shortsStr = JSON.stringify(shorts)
-// localStorage.setItem("shorts", shortsStr)
+        // Limpia el localStorage después de mostrar los datos finales si es necesario.
+        localStorage.removeItem('datosComprador');
+        localStorage.removeItem('carrito');
+    }
+}
 
-// const mediasStr = JSON.stringify(medias)
-// localStorage.setItem("medias", mediasStr)
+// Llama a esta función cuando sea necesario mostrar los datos finales.
+mostrarDatosFinales();
 
-// const botinesStr = JSON.stringify(botines)
-// localStorage.setItem("botines", botinesStr)
-
-// const guantesStr = JSON.stringify(guantes)
-// localStorage.setItem("guantes", guantesStr)

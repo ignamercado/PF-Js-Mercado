@@ -95,11 +95,10 @@ function mostrarDatosFinales() {
     const carrito = JSON.parse(localStorage.getItem('carrito'));
 
     if (datosComprador && carrito) {
-        // Aquí puedes mostrar los datos finales, por ejemplo, en un elemento HTML.
         console.log('Datos del comprador:', datosComprador);
         console.log('Productos comprados:', carrito);
 
-        // Limpia el localStorage después de mostrar los datos finales si es necesario.
+        // Limpia el localStorage después de mostrar los datos 
         localStorage.removeItem('datosComprador');
         localStorage.removeItem('carrito');
     }

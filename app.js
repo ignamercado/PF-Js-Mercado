@@ -100,12 +100,11 @@ function mostrarDatosFinales() {
         console.log('Datos del comprador:', datosComprador);
         console.log('Productos comprados:', carrito);
 
-        // Limpia el localStorage después de mostrar los datos 
+        // Limpio el localStorage después de mostrar los datos 
         sessionStorage.removeItem('datosComprador');
         localStorage.removeItem('carrito');
     }
-}
+} 
 
-// Llama a esta función cuando sea necesario mostrar los datos finales.
 mostrarDatosFinales();
 

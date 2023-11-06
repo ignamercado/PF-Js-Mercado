@@ -18,43 +18,7 @@ formulario.addEventListener('submit', function (e) {
     }, 1000);
 });
 
-// Defino mis productos
 
-
-const camisetas = {
-    nombre: "camisetas",
-    precio: 12000,
-    marca: "Adidas",
-    stock: true
-}
-
-const shorts = {
-    nombre: "shorts",
-    precio: 3500,
-    marca: "Adidas",
-    stock: true
-}
-
-const medias = {
-    nombre: "medias",
-    precio: 2500,
-    marca: "Nike",
-    stock: true
-}
-
-const botines = {
-    nombre: "botines",
-    precio: 30000,
-    marca: "Puma",
-    stock: true
-}
-
-const guantes = {
-    nombre: "guantes",
-    precio: 6000,
-    marca: "Under Armour",
-    stock: true
-};
 
 // Inicio variables
 
@@ -80,28 +44,53 @@ buttons.forEach((button, index) => {
   
 
 function mostrarCarrito() {
-    console.log("Carrito de compras:");
-    carrito.forEach((producto) => {
-      console.log(`${producto.nombre} - Precio: ${producto.precio}`);
+    const listaCarrito = document.getElementById('listaCarrito');
+    const totalCarrito = document.getElementById('totalCarrito');
+    let carritoHTML = "";
+    let precioTotal = 0;
+
+    carrito.forEach((producto, index) => {
+        carritoHTML += `
+            <li>
+                ${producto.nombre} - Precio: $${producto.precio}
+                <button class="eliminarProducto" data-index="${index}">Eliminar</button>
+            </li>
+        `;
+        precioTotal += producto.precio;
     });
-  
-    const precioTotal = carrito.reduce((total, producto) => total + producto.precio, 0);
-    console.log(`Precio total: ${precioTotal}`);
-  }
+
+    listaCarrito.innerHTML = carritoHTML;
+    totalCarrito.textContent = precioTotal;
+
+    // Escuchar eventos de clic en los botones de eliminar
+    const botonesEliminar = document.querySelectorAll('.eliminarProducto');
+    botonesEliminar.forEach((boton) => {
+        boton.addEventListener('click', function () {
+            const index = parseInt(boton.getAttribute('data-index'));
+            eliminarProductoDelCarrito(index);
+        });
+    });
+}
+
+function eliminarProductoDelCarrito(index) {
+    carrito.splice(index, 1);
+    mostrarCarrito();
+}
+
 
 // Almacenamos los productos en JSON
 
-const camisetasStr = JSON.stringify(camisetas)
-localStorage.setItem("camisetas", camisetasStr)
+// const camisetasStr = JSON.stringify(camisetas)
+// localStorage.setItem("camisetas", camisetasStr)
 
-const shortsStr = JSON.stringify(shorts)
-localStorage.setItem("shorts", shortsStr)
+// const shortsStr = JSON.stringify(shorts)
+// localStorage.setItem("shorts", shortsStr)
 
-const mediasStr = JSON.stringify(medias)
-localStorage.setItem("medias", mediasStr)
+// const mediasStr = JSON.stringify(medias)
+// localStorage.setItem("medias", mediasStr)
 
-const botinesStr = JSON.stringify(botines)
-localStorage.setItem("botines", botinesStr)
+// const botinesStr = JSON.stringify(botines)
+// localStorage.setItem("botines", botinesStr)
 
-const guantesStr = JSON.stringify(guantes)
-localStorage.setItem("guantes", guantesStr)
+// const guantesStr = JSON.stringify(guantes)
+// localStorage.setItem("guantes", guantesStr)

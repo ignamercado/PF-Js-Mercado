@@ -5,19 +5,17 @@
 }
 
 body {
-    height: 100vh;
-    width: 100%;
+
     display: flex;
     flex-direction: column;
 }
 
 header {
-    height: 15vh;
-    width: 100%;
+
     background-color: rgb(255, 255, 255);
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
@@ -57,19 +55,20 @@ img {
 .li_header a {
     color: black;
     text-decoration: none;
-    &:hover{
+
+    &:hover {
         color: rgb(239, 86, 86);
     }
 }
+
 main {
     display: flex;
-    height: 70vh;
-    width: 100%;
+
 }
 
 /*primer tercio del main*/
 
-.tercioSlogan{
+.tercioSlogan {
     width: 15%;
     height: 100%;
     background-color: rgb(11, 11, 59);
@@ -109,7 +108,7 @@ main {
     font-weight: lighter;
 }
 
-.tercioProductos{
+.tercioProductos {
     width: 50%;
     height: 100%;
     background-color: white;
@@ -118,6 +117,34 @@ main {
 .formularios {
     text-align: center;
 }
+
+.btnEnvioDatos {
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: rgb(236, 231, 231);
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+}
+
+.btnEnvioDatos:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+   }
+
+.btnEnvioDatos:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+   }
 
 .campos {
     color: rgb(11, 11, 59);
@@ -130,19 +157,19 @@ main {
     text-align: center;
 }
 
-.contenedorProductos{
+.contenedorProductos {
     display: flex;
     padding: 10px;
     text-align: center
 }
 
-.imagenProducto{
+.imagenProducto {
     height: 150px;
     width: 150px;
     padding: 15px;
 }
 
-.nombreProducto{
+.nombreProducto {
     text-align: center;
     font-size: 1rem;
 }
@@ -165,8 +192,8 @@ main {
 }
 
 #tituloCarrito {
-    display: inline-block; 
-    vertical-align: middle; 
+    display: inline-block;
+    vertical-align: middle;
     margin-left: 100px;
 }
 
@@ -179,9 +206,59 @@ main {
     border-radius: 4px;
 }
 
+/*acá utilicé uiverse.io para modificar el estilo del botón*/
+.btnEdit {
+    width: 130px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    border: none;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+}
+
+.svgIcon {
+    width: 16px;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.btnEdit::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: .3s;
+    mix-blend-mode: difference;
+}
+
+.btnEdit:hover::before {
+    transition-duration: .3s;
+    transform: translate(100%, -50%);
+    border-radius: 0;
+}
+
+.btnEdit:active {
+    transform: translate(5px, 5px);
+    transition-duration: .3s;
+}
+
 footer {
-    height: 15vh;
-    width: 100%;
+
     background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;

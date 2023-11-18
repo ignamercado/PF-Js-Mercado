@@ -1,0 +1,37 @@
+[
+	{
+		"id": "1",
+		"nombre": "camisetas",
+		"precio": 12000,
+		"marca": "Adidas",
+        "stock": "true"
+	},
+	{
+		"id": "2",
+		"nombre": "shorts",
+		"precio": 3500,
+		"marca": "Adidas",
+        "stock": "true"
+	},
+	{
+		"id": "3",
+		"nombre": "medias",
+		"precio": 2500,
+		"marca": "Nike",
+        "stock": "true"
+	},
+	{
+		"id": "4",
+		"nombre": "botines",
+		"precio": 30000,
+		"marca": "Puma",
+        "stock": "true"
+	},
+	{
+		"id": "5",
+		"nombre": "guantes",
+		"precio": 6000,
+		"marca": "Under Armour",
+        "stock": "true"
+    }
+]
